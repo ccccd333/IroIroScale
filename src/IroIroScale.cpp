@@ -53,7 +53,6 @@ namespace KMCCT {
 			else if (skill == RE::ActorValue::kRestoration) has_restoration = true;
 		}
 
-		// 見つかったものをリストに追加（必要ならここで順番を整理できます）
 		if (has_illusion) foundSchools.push_back(RE::ActorValue::kIllusion);
 		if (has_destruction) foundSchools.push_back(RE::ActorValue::kDestruction);
 		if (has_restoration) foundSchools.push_back(RE::ActorValue::kRestoration);
@@ -196,7 +195,9 @@ namespace KMCCT {
 			}
 			else {
 				// 素手
-				//UpdateCriticalDamageMultiplier(1.0);
+				if(!g_config.unarmed_perk_mult){
+					UpdateCriticalDamageMultiplier(1.0);
+				}
 			}
 
 		}
