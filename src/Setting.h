@@ -8,6 +8,8 @@ namespace KMCCT {
         float illusion_magnitude_multiplier = 1.0f;
         float destruction_magnitude_multiplier = 1.0f;
         float restoration_magnitude_multiplier = 1.0f;
+        float double_enchant_multiplier = 1.0f;
+        float triple_enchant_multiplier = 1.0f;
     };
 
     inline ModConfig g_config;

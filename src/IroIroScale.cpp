@@ -181,15 +181,31 @@ namespace KMCCT {
 							return deflated;
 						};
 
+						if (schools.size() == 2) {
+							float multiplier = GetSafeDeflatedRatio(safe_ratio, g_config.double_enchant_multiplier);
 
-						UpdateMagicDamageMultiplier(iro_iro_scale_destruction,
-							HasSchool(schools, RE::ActorValue::kDestruction) ? GetSafeDeflatedRatio(safe_ratio, g_config.destruction_magnitude_multiplier) : 1.0f);
+							UpdateMagicDamageMultiplier(iro_iro_scale_destruction, multiplier);
+							UpdateMagicDamageMultiplier(iro_iro_scale_illusion, 1.0f);
+							UpdateMagicDamageMultiplier(iro_iro_scale_restoration, 1.0f);
+						}
+						else if (schools.size() > 2) {
+							float multiplier = GetSafeDeflatedRatio(safe_ratio, g_config.triple_enchant_multiplier);
 
-						UpdateMagicDamageMultiplier(iro_iro_scale_illusion,
-							HasSchool(schools, RE::ActorValue::kIllusion) ? GetSafeDeflatedRatio(safe_ratio, g_config.illusion_magnitude_multiplier) : 1.0f);
+							UpdateMagicDamageMultiplier(iro_iro_scale_destruction, multiplier);
+							UpdateMagicDamageMultiplier(iro_iro_scale_illusion, 1.0f);
+							UpdateMagicDamageMultiplier(iro_iro_scale_restoration, 1.0f);
+						}
+						else {
 
-						UpdateMagicDamageMultiplier(iro_iro_scale_restoration,
-							HasSchool(schools, RE::ActorValue::kRestoration) ? GetSafeDeflatedRatio(safe_ratio, g_config.restoration_magnitude_multiplier) : 1.0f);
+							UpdateMagicDamageMultiplier(iro_iro_scale_destruction,
+								HasSchool(schools, RE::ActorValue::kDestruction) ? GetSafeDeflatedRatio(safe_ratio, g_config.destruction_magnitude_multiplier) : 1.0f);
+
+							UpdateMagicDamageMultiplier(iro_iro_scale_illusion,
+								HasSchool(schools, RE::ActorValue::kIllusion) ? GetSafeDeflatedRatio(safe_ratio, g_config.illusion_magnitude_multiplier) : 1.0f);
+
+							UpdateMagicDamageMultiplier(iro_iro_scale_restoration,
+								HasSchool(schools, RE::ActorValue::kRestoration) ? GetSafeDeflatedRatio(safe_ratio, g_config.restoration_magnitude_multiplier) : 1.0f);
+						}
 					}
 				}
 			}

@@ -22,6 +22,10 @@ namespace KMCCT {
                         g_config.destruction_magnitude_multiplier = enchant["DestructionMagnitudeMultiplier"].as<float>(1.0f);
                         g_config.illusion_magnitude_multiplier = enchant["IllusionMagnitudeMultiplier"].as<float>(1.0f);
                         g_config.restoration_magnitude_multiplier = enchant["RestorationMagnitudeMultiplier"].as<float>(1.0f);
+
+                        g_config.double_enchant_multiplier = enchant["DoubleEnchantMultiplier"].as<float>(1.0f);
+                        g_config.triple_enchant_multiplier = enchant["TripleEnchantMultiplier"].as<float>(1.0f);
+
                     }
                 }
 
